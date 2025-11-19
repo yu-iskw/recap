@@ -36,21 +36,24 @@ class SpannerClient:
         """
         Parse URL paths for Spanner operations.
 
-        Spanner URL format: spanner://project/instance/database/table
-        - paths[0]: project (optional, can be None)
-        - paths[1]: instance
-        - paths[2]: database
-        - paths[3]: table
+        Spanner URL format: spanner://instance/database/table
+        The project is determined from default credentials (GOOGLE_APPLICATION_CREDENTIALS
+        or gcloud CLI configuration).
+
+        URL components:
+        - paths[0]: instance ID
+        - paths[1]: database ID
+        - paths[2]: table name (optional, for schema method)
 
         :param method: Either "ls" or "schema"
         :param paths: URL path components
         :return: Tuple of connection URL and method arguments
         """
-        project, instance, database, table = (paths + [None, None, None, None])[:4]
+        instance, database, table = (paths + [None, None, None])[:3]
 
         match method:
             case "ls" | "schema":
-                return ("spanner://", [project, instance, database, table])
+                return ("spanner://", [None, instance, database, table])
             case _:
                 raise ValueError("Invalid method")
 

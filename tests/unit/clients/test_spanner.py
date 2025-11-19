@@ -8,33 +8,28 @@ from recap.clients.spanner import SpannerClient
     [
         # Test ls method
         ("ls", [], ("spanner://", [None, None, None, None])),
-        ("ls", ["project1"], ("spanner://", ["project1", None, None, None])),
+        ("ls", ["instance1"], ("spanner://", [None, "instance1", None, None])),
         (
             "ls",
-            ["project1", "instance1"],
-            ("spanner://", ["project1", "instance1", None, None]),
+            ["instance1", "database1"],
+            ("spanner://", [None, "instance1", "database1", None]),
         ),
         (
             "ls",
-            ["project1", "instance1", "database1"],
-            ("spanner://", ["project1", "instance1", "database1", None]),
-        ),
-        (
-            "ls",
-            ["project1", "instance1", "database1", "table1"],
-            ("spanner://", ["project1", "instance1", "database1", "table1"]),
+            ["instance1", "database1", "table1"],
+            ("spanner://", [None, "instance1", "database1", "table1"]),
         ),
         # Test schema method
         ("schema", [], ("spanner://", [None, None, None, None])),
         (
             "schema",
-            ["project1", "instance1", "database1", "table1"],
-            ("spanner://", ["project1", "instance1", "database1", "table1"]),
+            ["instance1", "database1", "table1"],
+            ("spanner://", [None, "instance1", "database1", "table1"]),
         ),
         # Test invalid method
         (
             "invalid_method",
-            ["project1"],
+            ["instance1"],
             pytest.raises(ValueError, match="Invalid method"),
         ),
     ],
