@@ -36,7 +36,9 @@ class SpannerClient:
         """
         Parse URL paths for Spanner operations.
 
-        Spanner URL format: spanner://instance/database/table
+        Spanner URL format: spanner:///instance/database/table
+        (Note the triple slash - this is required to specify instance in the path)
+
         The project is determined from default credentials (GOOGLE_APPLICATION_CREDENTIALS
         or gcloud CLI configuration).
 
@@ -44,6 +46,10 @@ class SpannerClient:
         - paths[0]: instance ID
         - paths[1]: database ID
         - paths[2]: table name (optional, for schema method)
+
+        Examples:
+        - spanner:///my-instance/my-database (list tables)
+        - spanner:///my-instance/my-database/my-table (get schema)
 
         :param method: Either "ls" or "schema"
         :param paths: URL path components
