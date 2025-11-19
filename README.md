@@ -35,6 +35,7 @@ Recap reads and writes schemas from web services, databases, and schema registri
 | [PostgreSQL](https://recap.build/docs/integrations/postgresql/) | ✅ |  |
 | [Protobuf](https://recap.build/docs/integrations/protobuf/) | ✅ | ✅ |
 | [Snowflake](https://recap.build/docs/integrations/snowflake/) | ✅ |  |
+| [Spanner](https://recap.build/docs/integrations/spanner/) | ✅ |  |
 | [SQLite](https://recap.build/docs/integrations/sqlite/) | ✅ |  |
 
 ## Install
