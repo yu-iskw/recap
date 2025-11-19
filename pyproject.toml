@@ -48,6 +48,9 @@ hive = [
 bigquery = [
     "google-cloud-bigquery>=3.17.2",
 ]
+spanner = [
+    "google-cloud-spanner>=3.0.0",
+]
 json = [
     "referencing>=0.30.0",
     "httpx>=0.24.1",
@@ -63,7 +66,7 @@ app = [
     "fsspec>=2023.9.2",
 ]
 all = [
-    "recap-core[app,bigquery,hive,json,kafka,proto]",
+    "recap-core[app,bigquery,hive,json,kafka,proto,spanner]",
 ]
 
 [build-system]
